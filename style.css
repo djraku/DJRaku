@@ -1,4 +1,22 @@
-/* Reset and Base Styles */
+/* 
+   DJ Raku Portfolio - Professional Club/Neon Style
+   Colors:
+   - Background: #0a0a0a
+   - Neon Pink: #ff00ff
+   - Neon Blue: #00ffff
+   - White: #ffffff
+*/
+
+:root {
+    --bg-color: #0a0a0a;
+    --neon-pink: #ff00ff;
+    --neon-blue: #00ffff;
+    --text-main: #ffffff;
+    --text-dim: #b0b0b0;
+    --font-header: 'Syne', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,30 +24,18 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Smooth scrolling navigation */
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Raleway', sans-serif;
-    background-color: #050505; /* Dark club background */
-    color: #ffffff;
-    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-body);
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
-h1, h2, .logo {
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Navigation Bar */
+/* --- Navigation --- */
 .navbar {
     position: fixed;
     top: 0;
@@ -37,210 +43,307 @@ h1, h2, .logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
+    padding: 25px 8%;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(15px);
     z-index: 1000;
+    transition: all 0.4s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar.scrolled {
+    padding: 15px 8%;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #00e5ff;
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    font-family: var(--font-header);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text-main);
+    cursor: pointer;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-}
-
-.nav-links li {
-    margin-left: 30px;
+    gap: 40px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    transition: color 0.3s ease;
+    color: var(--text-dim);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
-.nav-links a:hover {
-    color: #00e5ff; /* Neon hover effect */
+.nav-links a:hover, .nav-links a.active {
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
 }
 
-/* 1. Hero Section */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --- Hero Section --- */
 .hero {
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    /* Neon gradient background with animation */
-    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #6a00ff);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-}
-
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.hero h1 {
-    font-size: 5rem;
-    margin-bottom: 10px;
-    color: #fff;
-    text-shadow: 0 0 20px #6a00ff, 0 0 40px #00e5ff;
-}
-
-.tagline {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    font-weight: 300;
-    color: #ccc;
-}
-
-.cta-button {
-    display: inline-block;
-    padding: 15px 40px;
-    background: transparent;
-    border: 2px solid #00e5ff;
-    color: #00e5ff;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    font-family: 'Orbitron', sans-serif;
-}
-
-.cta-button:hover {
-    background: #00e5ff;
-    color: #000;
-    box-shadow: 0 0 20px #00e5ff;
-    transform: translateY(-3px);
-}
-
-/* 2. Section Generic Styles */
-.section {
-    padding: 100px 0;
-}
-
-.bg-alt {
-    background-color: #0a0a0a;
-}
-
-.neon-text {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 50px;
-    color: #00e5ff;
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
-}
-
-/* 3. Music Section Grid */
-.music-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.placeholder-embed {
-    height: 250px;
-    background: #1a1a1a;
-    border: 1px dashed #333;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
 }
 
-.placeholder-embed:hover {
-    transform: scale(1.02);
-    border-color: #00e5ff;
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1));
+    animation: rotate 20s linear infinite;
+    z-index: 0;
 }
 
-.placeholder-embed i {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    color: #333;
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-/* 4. Contact Section */
-.contact-content {
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-family: var(--font-header);
+    font-size: 8rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.4);
+    animation: heroIn 1.2s ease-out;
+}
+
+.tagline {
+    font-size: 1.8rem;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 40px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.8s forwards;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.2s forwards;
+}
+
+/* --- Buttons --- */
+.btn-primary, .btn-secondary {
+    padding: 15px 35px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--font-header);
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--neon-blue);
+    color: #000;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 25px var(--neon-blue);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+}
+
+.btn-secondary:hover {
+    background: var(--neon-pink);
+    color: #000;
+    box-shadow: 0 0 25px var(--neon-pink);
+    transform: translateY(-3px);
+}
+
+/* --- Sections --- */
+.section {
+    padding: 140px 8%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.section-title {
+    font-family: var(--font-header);
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.neon-pink {
+    color: var(--neon-pink);
+    text-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.neon-blue {
+    color: var(--neon-blue);
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.about-content {
+    font-size: 1.4rem;
+    max-width: 800px;
+    color: var(--text-dim);
+}
+
+.about-content p {
+    margin-bottom: 30px;
+}
+
+/* --- Music Grid --- */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.music-card {
+    background: #151515;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.music-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 40px rgba(0, 255, 255, 0.15);
+    border-color: var(--neon-blue);
+}
+
+.music-placeholder {
+    padding: 60px 20px;
     text-align: center;
 }
 
-.email-link {
-    font-size: 2rem;
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    margin: 20px 0;
-    transition: color 0.3s ease;
+.music-placeholder i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: var(--neon-blue);
 }
 
-.email-link:hover {
-    color: #6a00ff;
+/* --- Contact --- */
+.contact-wrap {
+    text-align: center;
+}
+
+.contact-wrap p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.email-btn {
+    font-family: var(--font-header);
+    font-size: 2.5rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.email-btn:hover {
+    color: var(--neon-pink);
+    text-shadow: 0 0 20px var(--neon-pink);
 }
 
 .social-links {
-    margin-top: 40px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
 }
 
 .social-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #fff;
-    margin: 0 20px;
     transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-    color: #00e5ff;
-    transform: translateY(-5px);
+    color: var(--neon-blue);
+    transform: scale(1.2);
+    text-shadow: 0 0 15px var(--neon-blue);
 }
 
-/* Animations */
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1.5s ease-out forwards;
-}
-
-.fade-in-delay {
-    opacity: 0;
-    animation: fadeIn 1.5s ease-out 0.5s forwards;
+/* --- Animations --- */
+@keyframes heroIn {
+    from { opacity: 0; transform: translateY(50px); filter: blur(10px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* Footer */
-footer {
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Footer --- */
+.footer {
+    padding: 60px 8%;
     text-align: center;
-    padding: 40px 0;
-    border-top: 1px solid #1a1a1a;
-    color: #666;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #555;
     font-size: 0.9rem;
 }
 
-/* 7. Responsive Design */
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .hero h1 { font-size: 5rem; }
+    .tagline { font-size: 1.2rem; letter-spacing: 5px; }
+}
+
 @media (max-width: 768px) {
-    .navbar {
-        padding: 15px 20px;
-    }
-    .nav-links {
-        display: none; /* Mobile menu can be added later */
-    }
-    .hero h1 {
-        font-size: 3rem;
-    }
-    .email-link {
-        font-size: 1.2rem;
-    }
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+    .section { padding: 80px 5%; }
+    .hero h1 { font-size: 3.5rem; }
+    .section-title { font-size: 2.5rem; }
+    .email-btn { font-size: 1.5rem; }
 }
