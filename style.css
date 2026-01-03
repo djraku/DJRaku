@@ -180,38 +180,44 @@ body {
 
 /* --- Buttons --- */
 .btn-primary, .btn-secondary {
+    display: inline-block;
     padding: 15px 35px;
     border-radius: 4px;
     text-decoration: none;
     font-weight: 700;
     text-transform: uppercase;
     font-family: var(--font-header);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 5;
+    cursor: pointer;
 }
 
 .btn-primary {
-    background-color: var(--neon-blue);
-    color: #000;
-    box-shadow: 0 0 10px var(--neon-blue); /* Initial subtle glow */
+    background-color: var(--neon-blue) !important;
+    color: #000 !important;
+    box-shadow: 0 0 15px var(--neon-blue);
+    border: none;
 }
 
 .btn-primary:hover {
-    box-shadow: 0 0 30px var(--neon-blue), 0 0 50px var(--neon-blue); /* Intense glow on hover */
-    transform: translateY(-5px) scale(1.05); /* Stronger lift */
-    background-color: #fff; /* Flash white on hover */
+    box-shadow: 0 0 30px var(--neon-blue), 0 0 60px var(--neon-blue) !important;
+    transform: translateY(-5px) scale(1.1) !important;
+    background-color: #ffffff !important;
 }
 
 .btn-secondary {
-    border: 2px solid var(--neon-pink); /* Thicker border */
-    color: var(--neon-pink);
+    border: 2px solid var(--neon-pink) !important;
+    color: var(--neon-pink) !important;
+    background: transparent;
     box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);
 }
 
 .btn-secondary:hover {
-    background: var(--neon-pink);
-    color: #000;
-    box-shadow: 0 0 30px var(--neon-pink), 0 0 50px var(--neon-pink); /* Intense glow on hover */
-    transform: translateY(-5px) scale(1.05); /* Stronger lift */
+    background: var(--neon-pink) !important;
+    color: #000 !important;
+    box-shadow: 0 0 30px var(--neon-pink), 0 0 60px var(--neon-pink) !important;
+    transform: translateY(-5px) scale(1.1) !important;
 }
 
 /* --- Sections --- */
