@@ -101,7 +101,32 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+    background: #000;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+    filter: grayscale(30%) contrast(120%);
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.5), rgba(10,10,10,1));
+    z-index: 1;
 }
 
 .hero::before {
@@ -109,9 +134,10 @@ body {
     position: absolute;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1));
+    background: linear-gradient(45deg, rgba(255, 0, 255, 0.15), rgba(0, 255, 255, 0.15));
     animation: rotate 20s linear infinite;
-    z-index: 0;
+    z-index: 2;
+    pointer-events: none;
 }
 
 @keyframes rotate {
@@ -227,6 +253,24 @@ body {
     margin-bottom: 30px;
 }
 
+.about-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-img {
+    width: 100%;
+    border-radius: 12px;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 255, 0.3));
+    transition: transform 0.5s ease;
+}
+
+.about-visual:hover .about-img {
+    transform: scale(1.05);
+}
+
 /* --- Music Grid --- */
 .music-grid {
     display: grid;
@@ -240,6 +284,25 @@ body {
     overflow: hidden;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.music-img-wrap {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.music-card:hover .card-bg {
+    transform: scale(1.1);
+    opacity: 0.8;
 }
 
 .music-card:hover {
@@ -249,8 +312,12 @@ body {
 }
 
 .music-placeholder {
-    padding: 60px 20px;
+    padding: 30px 20px;
     text-align: center;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(to top, #151515 80%, transparent);
+    margin-top: -50px;
 }
 
 .music-placeholder i {
@@ -346,4 +413,5 @@ body {
     .hero h1 { font-size: 3.5rem; }
     .section-title { font-size: 2.5rem; }
     .email-btn { font-size: 1.5rem; }
+    .about-grid-layout { grid-template-columns: 1fr; }
 }
