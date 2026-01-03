@@ -1,0 +1,246 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling navigation */
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #050505; /* Dark club background */
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, .logo {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00e5ff;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00e5ff; /* Neon hover effect */
+}
+
+/* 1. Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Neon gradient background with animation */
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #6a00ff);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 0 0 20px #6a00ff, 0 0 40px #00e5ff;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+    color: #ccc;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid #00e5ff;
+    color: #00e5ff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.cta-button:hover {
+    background: #00e5ff;
+    color: #000;
+    box-shadow: 0 0 20px #00e5ff;
+    transform: translateY(-3px);
+}
+
+/* 2. Section Generic Styles */
+.section {
+    padding: 100px 0;
+}
+
+.bg-alt {
+    background-color: #0a0a0a;
+}
+
+.neon-text {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #00e5ff;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
+}
+
+/* 3. Music Section Grid */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.placeholder-embed {
+    height: 250px;
+    background: #1a1a1a;
+    border: 1px dashed #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.placeholder-embed:hover {
+    transform: scale(1.02);
+    border-color: #00e5ff;
+}
+
+.placeholder-embed i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* 4. Contact Section */
+.contact-content {
+    text-align: center;
+}
+
+.email-link {
+    font-size: 2rem;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin: 20px 0;
+    transition: color 0.3s ease;
+}
+
+.email-link:hover {
+    color: #6a00ff;
+}
+
+.social-links {
+    margin-top: 40px;
+}
+
+.social-icon {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0 20px;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #00e5ff;
+    transform: translateY(-5px);
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+.fade-in-delay {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid #1a1a1a;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 7. Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .nav-links {
+        display: none; /* Mobile menu can be added later */
+    }
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .email-link {
+        font-size: 1.2rem;
+    }
+}
