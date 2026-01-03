@@ -192,23 +192,26 @@ body {
 .btn-primary {
     background-color: var(--neon-blue);
     color: #000;
+    box-shadow: 0 0 10px var(--neon-blue); /* Initial subtle glow */
 }
 
 .btn-primary:hover {
-    box-shadow: 0 0 25px var(--neon-blue);
-    transform: translateY(-3px);
+    box-shadow: 0 0 30px var(--neon-blue), 0 0 50px var(--neon-blue); /* Intense glow on hover */
+    transform: translateY(-5px) scale(1.05); /* Stronger lift */
+    background-color: #fff; /* Flash white on hover */
 }
 
 .btn-secondary {
-    border: 1px solid var(--neon-pink);
+    border: 2px solid var(--neon-pink); /* Thicker border */
     color: var(--neon-pink);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);
 }
 
 .btn-secondary:hover {
     background: var(--neon-pink);
     color: #000;
-    box-shadow: 0 0 25px var(--neon-pink);
-    transform: translateY(-3px);
+    box-shadow: 0 0 30px var(--neon-pink), 0 0 50px var(--neon-pink); /* Intense glow on hover */
+    transform: translateY(-5px) scale(1.05); /* Stronger lift */
 }
 
 /* --- Sections --- */
